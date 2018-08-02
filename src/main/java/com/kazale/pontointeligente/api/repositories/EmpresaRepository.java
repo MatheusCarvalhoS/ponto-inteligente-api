@@ -1,13 +1,13 @@
 package com.kazale.pontointeligente.api.repositories;
 
-import org.springframework.transaction.annotation.Transactional;
-
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.kazale.pontointeligente.api.entities.Empresa;
 
-public interface EmpresaRepository extends JpaRepository<Empresa, Long>{
-
-	@Transactional(readOnly = true) // papeamento para dizer que será somente consulta
+public interface EmpresaRepository extends JpaRepository<Empresa, Long> {
+	
+	@Transactional(readOnly = true)
 	Empresa findByCnpj(String cnpj);
+
 }
