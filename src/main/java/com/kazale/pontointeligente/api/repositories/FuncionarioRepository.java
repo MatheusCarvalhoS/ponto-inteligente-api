@@ -5,13 +5,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.kazale.pontointeligente.api.entities.Funcionario;
 
-@Transactional(readOnly = true) // todos os métodos são de somente leitura
-public interface FuncionarioRepository extends JpaRepository<Funcionario, Long>{
+@Transactional(readOnly = true)
+public interface FuncionarioRepository extends JpaRepository<Funcionario, Long> {
 
 	Funcionario findByCpf(String cpf);
 	
 	Funcionario findByEmail(String email);
 	
 	Funcionario findByCpfOrEmail(String cpf, String email);
-	
 }

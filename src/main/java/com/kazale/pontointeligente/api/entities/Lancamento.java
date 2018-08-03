@@ -23,11 +23,8 @@ import com.kazale.pontointeligente.api.enums.TipoEnum;
 @Entity
 @Table(name = "lancamento")
 public class Lancamento implements Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 234562983765L;
+	
+	private static final long serialVersionUID = 6524560251526772839L;
 
 	private Long id;
 	private Date data;
@@ -42,7 +39,7 @@ public class Lancamento implements Serializable {
 	}
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.AUTO)
 	public Long getId() {
 		return id;
 	}
@@ -51,7 +48,7 @@ public class Lancamento implements Serializable {
 		this.id = id;
 	}
 
-	@Temporal(TemporalType.TIMESTAMP) // Certificar que a data e a hora serão gravadas
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "data", nullable = false)
 	public Date getData() {
 		return data;
@@ -69,7 +66,7 @@ public class Lancamento implements Serializable {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-
+	
 	@Column(name = "localizacao", nullable = true)
 	public String getLocalizacao() {
 		return localizacao;
@@ -107,7 +104,7 @@ public class Lancamento implements Serializable {
 		this.tipo = tipo;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER) // trazer todos os dados do objeto
+	@ManyToOne(fetch = FetchType.EAGER)
 	public Funcionario getFuncionario() {
 		return funcionario;
 	}
@@ -115,24 +112,23 @@ public class Lancamento implements Serializable {
 	public void setFuncionario(Funcionario funcionario) {
 		this.funcionario = funcionario;
 	}
-
+	
 	@PreUpdate
-	public void preUpdate() {
-		dataAtualizacao = new Date();
-	}
-
-	@PrePersist
-	public void prePersist() {
-		final Date atual = new Date();
-		dataCriacao = atual;
-		dataAtualizacao = atual;
-	}
+    public void preUpdate() {
+        dataAtualizacao = new Date();
+    }
+     
+    @PrePersist
+    public void prePersist() {
+        final Date atual = new Date();
+        dataCriacao = atual;
+        dataAtualizacao = atual;
+    }
 
 	@Override
 	public String toString() {
-
 		return "Lancamento [id=" + id + ", data=" + data + ", descricao=" + descricao + ", localizacao=" + localizacao
-				+ ", dataCriacao=" + dataCriacao + ", dataAtualizacao=" + dataAtualizacao + ", " + "tipo=" + tipo
+				+ ", dataCriacao=" + dataCriacao + ", dataAtualizacao=" + dataAtualizacao + ", tipo=" + tipo
 				+ ", funcionario=" + funcionario + "]";
 	}
 

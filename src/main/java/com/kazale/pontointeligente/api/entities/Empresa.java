@@ -18,26 +18,22 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "empresa")
-public class Empresa implements Serializable{
+public class Empresa implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 2341234123546678L;
+	private static final long serialVersionUID = 3960436649365666213L;
 	
 	private Long id;
 	private String razaoSocial;
 	private String cnpj;
 	private Date dataCriacao;
 	private Date dataAtualizacao;
-	private List<Funcionario> Funcionarios;
+	private List<Funcionario> funcionarios;
 	
 	public Empresa() {
-		
 	}
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.AUTO)
 	public Long getId() {
 		return id;
 	}
@@ -46,7 +42,7 @@ public class Empresa implements Serializable{
 		this.id = id;
 	}
 
-	@Column(name="razao_social", nullable = false)
+	@Column(name = "razao_social", nullable = false)
 	public String getRazaoSocial() {
 		return razaoSocial;
 	}
@@ -54,7 +50,8 @@ public class Empresa implements Serializable{
 	public void setRazaoSocial(String razaoSocial) {
 		this.razaoSocial = razaoSocial;
 	}
-	@Column(name="cnpj", nullable = false)
+
+	@Column(name = "cnpj", nullable = false)
 	public String getCnpj() {
 		return cnpj;
 	}
@@ -62,7 +59,8 @@ public class Empresa implements Serializable{
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
 	}
-	@Column(name="data_criacao", nullable = false)
+
+	@Column(name = "data_criacao", nullable = false)
 	public Date getDataCriacao() {
 		return dataCriacao;
 	}
@@ -71,7 +69,7 @@ public class Empresa implements Serializable{
 		this.dataCriacao = dataCriacao;
 	}
 
-	@Column(name="data_atualizacao", nullable = false)
+	@Column(name = "data_atualizacao", nullable = false)
 	public Date getDataAtualizacao() {
 		return dataAtualizacao;
 	}
@@ -82,29 +80,28 @@ public class Empresa implements Serializable{
 
 	@OneToMany(mappedBy = "empresa", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	public List<Funcionario> getFuncionarios() {
-		return Funcionarios;
+		return funcionarios;
 	}
 
 	public void setFuncionarios(List<Funcionario> funcionarios) {
-		Funcionarios = funcionarios;
+		this.funcionarios = funcionarios;
 	}
-
+	
 	@PreUpdate
-	public void preUpdate() {
-		dataAtualizacao = new Date();
-	}
-	
-	@PrePersist
-	public void prePersist() {
-		final Date atual = new Date();
-		dataCriacao = atual;
-		dataAtualizacao = atual;
-	}
-	
+    public void preUpdate() {
+        dataAtualizacao = new Date();
+    }
+     
+    @PrePersist
+    public void prePersist() {
+        final Date atual = new Date();
+        dataCriacao = atual;
+        dataAtualizacao = atual;
+    }
+
 	@Override
 	public String toString() {
-		
-		return "Empresa [id="+id+", razaoSocial="+razaoSocial+", cnpj="+cnpj+", dataCricao="+dataCriacao+", dataAtualizacao="+dataAtualizacao+"]";
+		return "Empresa [id=" + id + ", razaoSocial=" + razaoSocial + ", cnpj=" + cnpj + ", dataCriacao=" + dataCriacao
+				+ ", dataAtualizacao=" + dataAtualizacao + "]";
 	}
-	
 }
