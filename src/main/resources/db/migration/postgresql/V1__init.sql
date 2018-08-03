@@ -1,4 +1,4 @@
-CREATE TABLE empresa(
+CREATE TABLE empresa (
   id serial NOT NULL PRIMARY KEY,
   cnpj varchar(255) NOT NULL,
   data_atualizacao timestamp NOT NULL,
@@ -31,7 +31,6 @@ CREATE TABLE lancamento (
   tipo varchar(255) NOT NULL,
   funcionario_id bigint DEFAULT NULL
 );
-
 --
 -- Constraints for table funcionario
 --
@@ -42,4 +41,4 @@ ALTER TABLE funcionario
 -- Constraints for table lancamento
 --
 ALTER TABLE lancamento
-ADD CONSTRAINT FK46i4k5vl8wah7feutye9kbpi4 FOREIGN KEY (funcionario_id) REFERENCES funcionario (id);
+  ADD CONSTRAINT FK46i4k5vl8wah7feutye9kbpi4 FOREIGN KEY (funcionario_id) REFERENCES funcionario (id);
