@@ -64,7 +64,6 @@ public class LancamentoRepositoryTest {
 		assertEquals(2, lancamentos.getTotalElements());
 	}
 	
-	
 	@After
 	public void tearDown() {
 		this.lancamentoRepository.deleteAll();

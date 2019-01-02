@@ -50,14 +50,23 @@ public class FuncionarioRepositoryTest {
 		assertNotNull(funcionario);
 	}
 	
+	@Test
+	public void testBuscarFuncionarioPorCpfOuEmailInvalido() {
+		Funcionario funcionario = this.funcionarioRepository.findByCpfOrEmail(CPF, "email@email.com");
+		assertNotNull(funcionario);
+	}
+	
+	@Test
+	public void testBuscarFuncionarioPorCpfInvalidoOuEmail() {
+		Funcionario funcionario = this.funcionarioRepository.findByCpfOrEmail("12312312322", EMAIL);
+		assertNotNull(funcionario);
+	}
 	
 	@Test
 	public void testBuscarFuncionarioPorCpf() {
 		Funcionario funcionario = this.funcionarioRepository.findByCpf(CPF);
 		assertEquals(CPF, funcionario.getCpf());
 	}
-	
-	
 	
 	@After
 	public void tearDown() {

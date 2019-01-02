@@ -32,10 +32,6 @@ public class EmpresaRepositoryTest {
 		this.empresaRepository.save(empresa);
 	}
 	
-	@After
-	public final void tearDown() {
-		this.empresaRepository.deleteAll();
-	}
 	
 	@Test
 	public void testBuscarPorCnpj() {
@@ -45,4 +41,8 @@ public class EmpresaRepositoryTest {
 		
 	}
 
+	@After
+	public final void tearDown() {
+		this.empresaRepository.deleteAll();
+	}
 }
