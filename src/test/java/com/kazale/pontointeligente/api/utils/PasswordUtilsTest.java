@@ -20,6 +20,4 @@ public class PasswordUtilsTest {
 		String hash = PasswordUtils.gerarBCrypt(SENHA);
 		assertTrue(bCryptEncoder.matches(SENHA, hash));
 	}
-	
-
 }

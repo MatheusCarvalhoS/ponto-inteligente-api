@@ -1,5 +1,6 @@
 package com.kazale.pontointeligente.api.services;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Optional;
@@ -31,13 +32,16 @@ public class EmpresaServiceTest {
 
 	private static final String CNPJ = "1234132412341234";
 
+	/**
+	 *  Funciona como uma sobrescrita de método 
+	 */
 	@Before
 	public void setUp() throws Exception {
+		
+		
 		BDDMockito.given(this.empresaRepository.findByCnpj(Mockito.anyString())).willReturn(new Empresa());
 		BDDMockito.given(this.empresaRepository.save(Mockito.any(Empresa.class))).willReturn(new Empresa());
 	}
-
-	
 	
 	@Test
 	public void testBuscarPorCnpj() {
@@ -46,6 +50,11 @@ public class EmpresaServiceTest {
 		assertTrue(empresa.isPresent());
 	}
 	
+	@Test
+	public void testPersistirEmpresa() {
+		Empresa empresa = this.empresaService.persistir(new Empresa());
+		assertNotNull(empresa);
+	}
 	
 	
 
