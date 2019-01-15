@@ -1,0 +1,31 @@
+http://localhost:8080/api/cadastrar-pj
+
+{
+	"nome":"Matheus de Carvalho",
+	"email":"matheus@teste.com",
+	"senha":"123123",
+	"cpf":"20011631260",
+	"razaoSocial":"teste razao",
+	"cnpj":"11861136000102"
+}
+
+http://localhost:8080/api/cadastrar-pf
+
+{
+	"nome":"Fulano",
+	"email":"matheus@teste2.com",
+	"senha":"123123",
+	"cpf":"00000000191",
+	"valorHora":"50",
+	"cnpj":"11861136000102"
+}
+
+http://localhost:8080/api/funcionario/1
+
+{
+	"nome":"Fulano de tal",
+	"email":"matheus@teste.com",
+	"valorHora":"70",
+	"qtdHorasTrabalhoDia":"8.5",
+	"cnpj":"11861136000102"
+}
